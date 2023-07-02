@@ -80,6 +80,7 @@ export CXX_host=/usr/bin/clang++
 export CC_target=$TOOLCHAIN/bin/$SUFFIX-clang
 export CXX_target=$TOOLCHAIN/bin/$SUFFIX-clang++
 export AR_target=$TOOLCHAIN/bin/llvm-ar
+export LDFLAGS=-static-libstdc++
 
 GYP_DEFINES="target_arch=$ARCH"
 GYP_DEFINES+=" v8_target_arch=$V8_ARCH"
