@@ -31,14 +31,13 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-      - name: Install deps
-        run: choco install nasm
-      - name: Environment Information
-        run: npx envinfo
       - name: Build
         run: ./vcbuild.bat release dll nonpm nocorepack without-intl openssl-no-asm
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: nodejs-windows-artifacts
-          path: out/Release
+          path: |
+            out/Release
+            !out/Release/lib
+            !out/Release/obj
