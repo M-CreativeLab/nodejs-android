@@ -22,6 +22,11 @@ jobs:
       - uses: actions/checkout@v3
         with:
           persist-credentials: false
+      - name: Upload Artifact(Test)
+        uses: actions/upload-artifact@v2
+        with:
+          name: nodejs-source-artifacts
+          path: src
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v3
         with:
@@ -32,3 +37,8 @@ jobs:
         run: npx envinfo
       - name: Build
         run: ./vcbuild.bat release dll nonpm nocorepack without-intl openssl-no-asm
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: nodejs-windows-artifacts
+          path: out/Release
