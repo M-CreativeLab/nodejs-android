@@ -80,6 +80,7 @@ export CXX_host=/usr/bin/clang++
 export CC_target=$TOOLCHAIN/bin/$SUFFIX-clang
 export CXX_target=$TOOLCHAIN/bin/$SUFFIX-clang++
 export AR_target=$TOOLCHAIN/bin/llvm-ar
+export CPPFLAGS=-s
 export LDFLAGS=-static-libstdc++
 
 GYP_DEFINES="target_arch=$ARCH"
@@ -99,7 +100,6 @@ if [ -f "configure" ]; then
         --openssl-no-asm \
         --with-intl=none \
         --cross-compiling \
-        --without-inspector \
         --without-intl \
         --shared
 fi
